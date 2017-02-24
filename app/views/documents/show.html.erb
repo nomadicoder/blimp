@@ -10,5 +10,20 @@
   <%= @document.id_field %>
 </p>
 
+<p>
+  <strong>File URL:</strong>
+  <%= @document.datafile.url %>
+</p>
+
+<p>
+  <strong>File Path:</strong>
+  <%= @document.datafile.current_path %>
+</p>
+
+<p>
+  <strong>File Identifier:</strong>
+  <%= @document.datafile.identifier %>
+</p>
+
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
