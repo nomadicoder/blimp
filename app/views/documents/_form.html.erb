@@ -17,6 +17,11 @@
   </div>
 
   <div class="field">
+    <%= f.label :datafile, "Upload localfile:" %>
+    <%= f.file_field :datafile %>
+    <%= f.hidden_field :datafile_cache %>
+
+  <div class="field">
     <%= f.label :id_field %>
     <%= f.text_field :id_field %>
   </div>
