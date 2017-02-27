@@ -26,6 +26,11 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
 
+    # Generate a SOLR map file
+    HarvestCSV.harvest(@document.datafile.current_path,
+                       'tmp/solr_map.yml',
+                       solr_endpoint = 'http://localhost:8983/solr/blacklight-core')
+
     respond_to do |format|
       if @document.save
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
@@ -69,6 +74,6 @@ class DocumentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def document_params
-      params.require(:document).permit(:filename, :id_field, :datafile)
+      params.require(:document).permit(:id_field, :datafile)
     end
 end
