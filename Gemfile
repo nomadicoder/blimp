@@ -57,4 +57,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'carrierwave', '~> 1.0'
-gem 'harvest_csv'
+#gem 'harvest_csv'
+gem 'rsolr', '~> 1.0'
+gem 'rspec'
+gem 'ruby-progressbar'

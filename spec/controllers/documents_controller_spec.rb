@@ -25,14 +25,14 @@ RSpec.describe DocumentsController, type: :controller do
   # adjust the attributes here as well.
   let(:valid_attributes) {
     {
-      filename: "mydata.csv",
+      map_filename: "solr_map.yml",
       id_field: "data_id"
     }
   }
 
   let(:invalid_attributes) {
     {
-      filename: "",
+      map_filename: "",
       id_field: ""
     }
   }
@@ -110,7 +110,7 @@ RSpec.describe DocumentsController, type: :controller do
     context "with valid params" do
       let(:new_attributes) {
         {
-          filename: "newdata.csv",
+          map_filename: "solr_map-new.yml",
           id_field: "newdata_id"
         }
       }
@@ -119,7 +119,7 @@ RSpec.describe DocumentsController, type: :controller do
         document = Document.create! valid_attributes
         put :update, params: {id: document.to_param, document: new_attributes}, session: valid_session
         document.reload
-        expect(document.filename).to eq(new_attributes[:filename])
+        expect(document.map_filename).to eq(new_attributes[:map_filename])
         expect(document.id_field).to eq(new_attributes[:id_field])
       end
 

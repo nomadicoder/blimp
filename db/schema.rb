@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 20170224185516) do
 
   create_table "documents", force: :cascade do |t|
-    t.string   "filename"
+    t.string   "map_filename"
     t.string   "id_field"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.string   "datafile"
   end
 

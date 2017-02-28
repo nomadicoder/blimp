@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Map Filename</th>
       <th>Datafile URL</th>
       <th>Datafile Directory</th>
       <th>Datafile Name</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @documents.each do |document| %>
       <tr>
+        <td><%= document.map_filename %></td>
         <td><%= document.datafile.url %></td>
         <td><%= File.dirname(document.datafile.current_path.to_s) %></td>
         <td><%= File.basename(document.datafile.current_path.to_s) %></td>

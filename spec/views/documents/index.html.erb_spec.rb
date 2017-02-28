@@ -4,11 +4,11 @@ RSpec.describe "documents/index", type: :view do
   before(:each) do
     assign(:documents, [
       Document.create!(
-        :filename => "Filename",
+        :map_filename => "Filename",
         :id_field => "Id Field"
       ),
       Document.create!(
-        :filename => "Filename",
+        :map_filename => "Filename",
         :id_field => "Id Field"
       )
     ])
