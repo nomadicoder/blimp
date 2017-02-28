@@ -71,6 +71,8 @@ class DocumentsController < ApplicationController
   # DELETE /documents/1
   # DELETE /documents/1.json
   def destroy
+    FileUtils.rm(@document.datafile.current_path) if FileTest.exist?(@document.datafile.current_path)
+    FileUtils.rm(@document.map_filename) if FileTest.exist?(@document.map_filename)
     @document.destroy
     respond_to do |format|
       format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
