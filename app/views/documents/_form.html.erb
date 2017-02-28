@@ -12,7 +12,11 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :datafile, "Upload localfile:" %>
+    <%= f.hidden_field :map_filename %>
+  </div>
+
+  <div class="field">
+    <%= f.label :datafile, "Upload CSV file:" %>
     <%= f.file_field :datafile %>
     <%= f.hidden_field :datafile_cache %>
 

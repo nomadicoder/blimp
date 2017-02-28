@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "documents/show", type: :view do
   before(:each) do
     @document = assign(:document, Document.create!(
-      :filename => "Filename",
+      :map_filename => "Filename",
       :id_field => "Id Field"
     ))
   end
