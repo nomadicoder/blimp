@@ -28,6 +28,19 @@ class DatafileUploader < CarrierWave::Uploader::Base
   # def scale(width, height)
   #   # do something
   # end
+  
+  process ingest: []
+  
+  def ingest
+    # Generate a SOLR map file
+    HarvestCSV.make_map(current_path,
+                        model.map_filename,
+                        model.id_field)
+    # Harvest the data
+    HarvestCSV.harvest(current_path,
+                       model.map_filename,
+                       solr_endpoint = 'http://localhost:8983/solr/blacklight-core')
+  end
 
   # Create different versions of your uploaded files:
   # version :thumb do

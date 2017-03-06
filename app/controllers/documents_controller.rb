@@ -31,17 +31,8 @@ class DocumentsController < ApplicationController
   def create
     @document = Document.new(document_params)
 
-    # Generate a SOLR map file
-    HarvestCSV.make_map(@document.datafile.current_path,
-                        @document.map_filename,
-                        @document.id_field)
-
     respond_to do |format|
       if @document.save
-        # Harvest the data
-        HarvestCSV.harvest(@document.datafile.current_path,
-                           @document.map_filename,
-                           solr_endpoint = 'http://localhost:8983/solr/blacklight-core')
         format.html { redirect_to @document, notice: 'Document was successfully created.' }
         format.json { render :show, status: :created, location: @document }
       else
@@ -56,9 +47,6 @@ class DocumentsController < ApplicationController
   def update
     respond_to do |format|
       if @document.update(document_params)
-        HarvestCSV.harvest(@document.datafile.current_path,
-                           @document.map_filename,
-                           solr_endpoint = 'http://localhost:8983/solr/blacklight-core')
         format.html { redirect_to @document, notice: 'Document was successfully updated.' }
         format.json { render :show, status: :ok, location: @document }
       else
