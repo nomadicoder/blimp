@@ -48,7 +48,7 @@ module HarvestCSV
   end
 
   def self.make_map(csv_path,
-                    map_file,
+                    map_path,
                     id_field)
     schema_map = Hash.new
     CSV.open(csv_path, headers: true) do |csv|
@@ -61,7 +61,9 @@ module HarvestCSV
         schema_map[field] << "#{field.downcase}_facet"
       end
     end
-    YAML.dump(schema_map, File.new(map_file, 'w'))
+    map_file = File.new(map_path, 'w')
+    YAML.dump(schema_map, map_file)
+    map_file.close
   end
 
   def self.get_blacklight_add_fields(schema_map, field_match)
